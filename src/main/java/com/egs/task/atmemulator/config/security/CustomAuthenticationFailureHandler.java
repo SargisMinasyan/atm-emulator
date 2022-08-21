@@ -18,7 +18,13 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-
+/**
+ * The CustomAuthenticationFailureHandler to manage and deactivate user after 3 failure login
+ *
+ * @author  Sargis Minasyan
+ * @version 1.0
+ * @since   2022-08-21
+ */
 public class CustomAuthenticationFailureHandler
         implements AuthenticationFailureHandler {
 

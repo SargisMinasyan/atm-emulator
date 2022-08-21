@@ -28,8 +28,9 @@ public class BaseInformationController {
     }
     @RequestMapping(value = "/add/new/message", method = RequestMethod.GET, name = "communication network")
     public ResponseEntity addMessageByCardNumber(@RequestParam(name = "userCardNumber") String userCardNumber,
-                                                 @RequestParam(name = "message") String message) {
-        userFacade.addMessages(userCardNumber,message);
+                                                 @RequestParam(name = "message") String message,
+                                                 @RequestParam(name = "title") String title) {
+        userFacade.addMessages(userCardNumber,message,title);
         return new ResponseEntity<>( HttpStatus.CREATED);
     }
 }

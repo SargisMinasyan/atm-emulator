@@ -17,7 +17,13 @@ import org.springframework.web.server.session.DefaultWebSessionManager;
 import org.springframework.web.server.session.WebSessionManager;
 
 import javax.servlet.http.HttpSession;
-
+/**
+ * The ServiceUserDetailsService withe custom user creation to have own user in security side
+ *
+ * @author  Sargis Minasyan
+ * @version 1.0
+ * @since   2022-08-21
+ */
 @Slf4j
 @Component
 @AllArgsConstructor

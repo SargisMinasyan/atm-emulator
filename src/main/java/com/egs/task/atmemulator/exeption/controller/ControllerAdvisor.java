@@ -21,7 +21,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
+/**
+ * The ControllerAdvisor withe custom exception and there handlers
+ *
+ * @author  Sargis Minasyan
+ * @version 1.0
+ * @since   2022-08-21
+ */
 @ControllerAdvice
 public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 

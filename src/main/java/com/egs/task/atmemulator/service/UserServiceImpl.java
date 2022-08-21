@@ -2,18 +2,17 @@ package com.egs.task.atmemulator.service;
 
 import com.egs.task.atmemulator.dto.ATMUserSignUpDTO;
 import com.egs.task.atmemulator.exeption.NotFoundException;
-import com.egs.task.atmemulator.model.ATMUser;
-import com.egs.task.atmemulator.model.CommunicationNetwork;
-import com.egs.task.atmemulator.model.MessagesForATMUser;
-import com.egs.task.atmemulator.model.UserRole;
+import com.egs.task.atmemulator.model.*;
 import com.egs.task.atmemulator.repository.ATMUserRepository;
 import com.egs.task.atmemulator.repository.CommunicationRepository;
 import com.egs.task.atmemulator.repository.MessagesRepository;
 import com.egs.task.atmemulator.repository.UserRoleRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -70,10 +69,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addMessages(String cardNumber, String message) {
+    @Transactional
+    public void addMessages(String cardNumber, String message,String title) {
         Optional<ATMUser> atmUser = atmUserRepository.findATMUserByCardNumber(cardNumber);
         if (atmUser.isPresent()) {
-            messagesRepository.save(new MessagesForATMUser(message,atmUser.get()));
+            messagesRepository.save(MessagesForATMUser.of(message,title,atmUser.get()));
         }else {
             throw new NotFoundException(cardNumber);
         }

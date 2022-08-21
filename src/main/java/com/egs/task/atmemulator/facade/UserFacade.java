@@ -51,7 +51,7 @@ public class UserFacade {
         return userService.findAllUserMessages(uuid).stream().map(messages -> modelMapper.map(messages, MessageDTO.class)).collect(Collectors.toList());
     }
 
-    public void addMessages(String cardNumber, String message) {
-        userService.addMessages(cardNumber, message);
+    public void addMessages(String cardNumber, String message,String title) {
+        userService.addMessages(cardNumber, message,title);
     }
 }

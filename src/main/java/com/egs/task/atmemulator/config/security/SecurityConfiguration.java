@@ -16,7 +16,13 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * The SecurityConfiguration to manage and spring security
+ *
+ * @author  Sargis Minasyan
+ * @version 1.0
+ * @since   2022-08-21
+ */
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor

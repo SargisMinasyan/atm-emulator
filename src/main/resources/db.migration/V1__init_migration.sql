@@ -27,8 +27,8 @@ create table messages
     uuid       uuid,
     messages   varchar(255),
     user_id    bigint not null
-        constraint FK_ROLE_ID
-            references role
+        constraint FK_ATM_USER_ID
+            references atm_user
 );
 
 
