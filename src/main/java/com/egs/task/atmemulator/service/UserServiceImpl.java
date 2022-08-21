@@ -70,13 +70,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void addMessages(String cardNumber, String message,String title) {
+    public MessagesForATMUser addMessages(String cardNumber, String message,String title) {
         Optional<ATMUser> atmUser = atmUserRepository.findATMUserByCardNumber(cardNumber);
+        MessagesForATMUser save ;
         if (atmUser.isPresent()) {
-            messagesRepository.save(MessagesForATMUser.of(message,title,atmUser.get()));
+            save = messagesRepository.save(MessagesForATMUser.of(message, title, atmUser.get()));
         }else {
             throw new NotFoundException(cardNumber);
         }
+        return save;
     }
 
 

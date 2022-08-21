@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public interface UserBalanceService {
 
-    void updateUserBalance(String email, Long incomingCash);
+    Long updateUserBalance(String email, Long incomingCash);
 
     Long cashOut( String email ,Long cash);
 }

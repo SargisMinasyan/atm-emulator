@@ -12,4 +12,5 @@ import lombok.Setter;
 public class MessageDTO {
 
     private String messages;
+    private String title;
 }

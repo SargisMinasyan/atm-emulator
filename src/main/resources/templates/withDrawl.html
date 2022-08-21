@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <title>Welcome to Spring Security Thymeleaf tutorial</title>
+</head>
+<body>
+<h2>Welcome</h2>
+<p>Spring Security Thymeleaf tutorial</p>
+<div sec:authorize="hasRole('USER')">Text visible to user.</div>
+<div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
+<div sec:authorize="isAuthenticated()">
+  Text visible only to authenticated users.
+</div>
+<dr/>
+<hr/>
+<div>
+  <label>
+    YOUR CURRENGT BALANCE EQUALSE TO :
+    <span th:text="${currentBalance}">
+    </span>
+  </label>
+  <form th:method="POST" th:action="@{/atm/withDrawl}">
+
+    <input type="text" th:name="withDrawlAmount" placeholder="please fill withDrawl amount"/>
+    <input type="submit"/>
+  </form>
+</div>
+</body>
+</html>

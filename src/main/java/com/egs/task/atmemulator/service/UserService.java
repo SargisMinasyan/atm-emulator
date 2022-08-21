@@ -22,5 +22,5 @@ public interface UserService {
     List<CommunicationNetwork> findCommunications();
 
     List<MessagesForATMUser> findAllUserMessages(UUID uuid);
-    void addMessages(String cardNumber, String message,String title);
+    MessagesForATMUser addMessages(String cardNumber, String message,String title);
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Welcome to Spring Security Thymeleaf tutorial</title>
+</head>
+<body>
+
+<div>
+  <label>
+    pleas take your amount :
+    <span th:text="${withDrawlAmount}">
+    </span>
+  </label>
+  <h1>
+    please don't forget take your card!
+  </h1>
+  <h1>
+    <a href="/atm" >back to home page </a>
+  </h1>
+</div>
+</body>
+</html>

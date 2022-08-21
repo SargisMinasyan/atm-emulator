@@ -3,6 +3,7 @@ package com.egs.task.atmemulator.facade;
 import com.egs.task.atmemulator.dto.ATMUserSignUpDTO;
 import com.egs.task.atmemulator.dto.CommunicationNetworkDTO;
 import com.egs.task.atmemulator.dto.MessageDTO;
+import com.egs.task.atmemulator.model.MessagesForATMUser;
 import com.egs.task.atmemulator.repository.ATMUserRepository;
 import com.egs.task.atmemulator.service.UserBalanceService;
 import com.egs.task.atmemulator.service.UserService;
@@ -39,8 +40,8 @@ public class UserFacade {
         return userBalanceService.cashOut(email, cash);
     }
 
-    public void fillBalance(String email, Long cash) {
-        userBalanceService.updateUserBalance(email, cash);
+    public Long fillBalance(String email, Long cash) {
+        return userBalanceService.updateUserBalance(email, cash);
     }
 
     public List<CommunicationNetworkDTO> findCommunications() {
@@ -51,7 +52,7 @@ public class UserFacade {
         return userService.findAllUserMessages(uuid).stream().map(messages -> modelMapper.map(messages, MessageDTO.class)).collect(Collectors.toList());
     }
 
-    public void addMessages(String cardNumber, String message,String title) {
-        userService.addMessages(cardNumber, message,title);
+    public MessageDTO addMessages(String cardNumber, String message, String title) {
+       return modelMapper.map(userService.addMessages(cardNumber, message,title), MessageDTO.class);
     }
 }
