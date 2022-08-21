@@ -17,7 +17,7 @@ public class MessagesForATMUser extends BaseEntity {
     @JoinColumn(name = "user_id")
     private ATMUser user;
 
-    private MessagesForATMUser(String messages,String title,ATMUser user) {
+    protected MessagesForATMUser(String messages,String title,ATMUser user) {
         this.user = user;
         this.title = title;
         this.messages = messages;
@@ -26,7 +26,7 @@ public class MessagesForATMUser extends BaseEntity {
         return new MessagesForATMUser(messages,title,user);
     }
 
-    private MessagesForATMUser() {
+    protected MessagesForATMUser() {
     }
 
 }

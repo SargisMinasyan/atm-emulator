@@ -2,6 +2,7 @@ package com.egs.task.atmemulator.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.Pattern;
 import java.security.Timestamp;
 import java.time.LocalDateTime;
 
@@ -12,11 +13,19 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ATMUserSignUpDTO {
 
+    @NonNull
+    @Pattern( regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
     private String email;
+    @NonNull
     private String password;
+    @NonNull
     private String card_holder_name;
+    @NonNull
     private String card_number;
+    @NonNull
     private String card_cvv;
+    @NonNull
     private LocalDateTime cardExpDate;
+    @NonNull
     private Long balance;
 }

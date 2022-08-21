@@ -23,12 +23,19 @@ public class UserBalanceServiceImpl implements UserBalanceService{
 
     @Override
     @Transactional
-    public void updateUserBalance(String email, Long incomingCash) {
+    public Long updateUserBalance(String email, Long incomingCash) {
         Optional<ATMUser> atmUserById = atmUserRepository.findATMUserByEmail(email);
         if (!atmUserById.isPresent()) {
             throw  new NotFoundException("user not found");
         }
-        atmUserRepository.addToUserBalance(atmUserById.get().getId(),incomingCash);
+        try {
+            atmUserRepository.addToUserBalance(atmUserById.get().getId(),incomingCash);
+        }catch (DataIntegrityViolationException exception)
+        {
+            throw new ValidationException();
+        }
+        return atmUserById.get().getBalance()+incomingCash;
+
     }
     @Override
     @Transactional()
@@ -43,6 +50,7 @@ public class UserBalanceServiceImpl implements UserBalanceService{
         {
             throw new ValidationException();
         }
-        return atmUserById.get().getBalance();
+        return atmUserById.get().getBalance()-cash;
     }
+
 }

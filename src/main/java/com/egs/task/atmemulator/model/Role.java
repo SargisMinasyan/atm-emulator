@@ -16,4 +16,11 @@ public class Role extends BaseEntity implements Serializable {
 
     protected Role() {}
 
+    protected Role(UserRole roleName) {
+        this.roleName = roleName;
+    }
+
+    public static Role of(){
+        return new Role(UserRole.ROLE_USER);
+    }
 }

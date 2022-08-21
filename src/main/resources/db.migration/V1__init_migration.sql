@@ -26,6 +26,7 @@ create table messages
     updated_at timestamp,
     uuid       uuid,
     messages   varchar(255),
+    title   varchar(255),
     user_id    bigint not null
         constraint FK_ATM_USER_ID
             references atm_user

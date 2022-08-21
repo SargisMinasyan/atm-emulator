@@ -34,6 +34,7 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/admin").hasRole("USER")
+                .antMatchers("/atm/**").hasRole("USER")
                 .antMatchers("/login","/swagger-ui/**","/v3/api-docs/**", "/users/**","/base_information/**").permitAll()
 //                .antMatchers("/**").permitAll()
                 .antMatchers("/user/**").authenticated()
@@ -41,6 +42,7 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .formLogin()
+                .defaultSuccessUrl("/atm/",true)
                 .usernameParameter("card_number")
                 .passwordParameter("pin")
                 .failureHandler(authenticationFailureHandler())

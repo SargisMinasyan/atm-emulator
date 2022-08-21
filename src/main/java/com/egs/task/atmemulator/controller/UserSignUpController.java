@@ -26,4 +26,5 @@ public class UserSignUpController {
         userFacade.createNewATMUser(atmUserSignUpDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
 }

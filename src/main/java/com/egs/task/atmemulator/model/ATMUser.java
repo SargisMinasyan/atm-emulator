@@ -31,7 +31,7 @@ public class ATMUser extends BaseEntity implements Serializable {
     protected ATMUser() {
     }
 
-    private ATMUser(String email, String password, String card_holder_name, String card_number, String card_cvv, LocalDateTime cardExpDate, Role role, Long balance) {
+    protected ATMUser(String email, String password, String card_holder_name, String card_number, String card_cvv, LocalDateTime cardExpDate, Role role, Long balance) {
         this.email = email;
         this.password = password;
         this.card_holder_name = card_holder_name;
