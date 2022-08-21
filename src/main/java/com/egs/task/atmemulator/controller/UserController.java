@@ -51,17 +51,4 @@ public class UserController {
         return new ResponseEntity<>(userFacade.fillBalance(((CustomUser) authentication.getPrincipal()).getEmail(),incomingCash),HttpStatus.ACCEPTED);
     }
 
-
-//    @GetMapping(name = "/update/user/balance" )
-//    public CustomerDTO updateUserBalance(@PathVariable String name){
-//        return userFacade.findCustomerByName(name);
-//    }
-//    @GetMapping(name = "/find/customer/by/{name)" )
-//    public CustomerDTO findCustomerByName(@PathVariable String name){
-//        return customerFacade.findCustomerByName(name);
-//    }
-//    @GetMapping(name = "/find/customer/by/{name)" )
-//    public CustomerDTO findCustomerByName(@PathVariable String name){
-//        return customerFacade.findCustomerByName(name);
-//    }
 }
