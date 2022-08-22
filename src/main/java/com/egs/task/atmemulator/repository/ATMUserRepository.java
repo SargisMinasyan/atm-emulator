@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
-import java.util.UUID;
 
 public interface ATMUserRepository extends JpaRepository<ATMUser, Long> {
 
@@ -18,9 +17,10 @@ public interface ATMUserRepository extends JpaRepository<ATMUser, Long> {
     Optional<ATMUser> findATMUserById(Long id);
     @Query("SELECT user.balance from ATMUser as user where user.email = ?1")
     Optional<String> findBalanceByEmail(String email);
+
     @Modifying
     @Query("UPDATE ATMUser as user set  user.balance = user.balance + :addTo where user.id = :id ")
-    void addToUserBalance(@Param(value = "id")Long id , @Param(value = "addTo") Long addTo);
+    void addToUserBalance(@Param(value = "id") Long id, @Param(value = "addTo") Long addTo);
 
     @Modifying
     @Query("UPDATE ATMUser as user set  user.balance = user.balance - :addTo where user.id = :id ")

@@ -33,7 +33,7 @@ public class CustomAuthenticationFailureHandler
     private HttpSession httpSession;
 
     @Autowired
-    ATMUserRepository atmUserRepository;
+    private ATMUserRepository atmUserRepository;
     @Override
     public void onAuthenticationFailure(HttpServletRequest request,HttpServletResponse response,AuthenticationException exception)
             throws IOException, ServletException {

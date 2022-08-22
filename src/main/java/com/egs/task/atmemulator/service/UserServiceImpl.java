@@ -2,14 +2,16 @@ package com.egs.task.atmemulator.service;
 
 import com.egs.task.atmemulator.dto.ATMUserSignUpDTO;
 import com.egs.task.atmemulator.exeption.NotFoundException;
-import com.egs.task.atmemulator.model.*;
+import com.egs.task.atmemulator.model.ATMUser;
+import com.egs.task.atmemulator.model.CommunicationNetwork;
+import com.egs.task.atmemulator.model.MessagesForATMUser;
+import com.egs.task.atmemulator.model.UserRole;
 import com.egs.task.atmemulator.repository.ATMUserRepository;
 import com.egs.task.atmemulator.repository.CommunicationRepository;
 import com.egs.task.atmemulator.repository.MessagesRepository;
 import com.egs.task.atmemulator.repository.UserRoleRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,21 +24,17 @@ import java.util.UUID;
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
-    @Autowired
     private final ATMUserRepository atmUserRepository;
-    @Autowired
     private final MessagesRepository messagesRepository;
-    @Autowired
     private final CommunicationRepository communicationRepository;
-    @Autowired
     private final UserRoleRepository userRoleRepository;
-
 
     @Override
     public Optional<ATMUser> findByEmail(String username) {
         log.info("Searching user by username {}", username);
         return atmUserRepository.findATMUserByEmail(username);
     }
+
     @Override
     public Optional<ATMUser> findByCardNumber(String cardNumber) {
         log.info("Searching user by cartNumber {}", cardNumber);
@@ -70,12 +68,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public MessagesForATMUser addMessages(String cardNumber, String message,String title) {
+    public MessagesForATMUser addMessages(String cardNumber, String message, String title) {
         Optional<ATMUser> atmUser = atmUserRepository.findATMUserByCardNumber(cardNumber);
-        MessagesForATMUser save ;
+        MessagesForATMUser save;
         if (atmUser.isPresent()) {
             save = messagesRepository.save(MessagesForATMUser.of(message, title, atmUser.get()));
-        }else {
+        } else {
             throw new NotFoundException(cardNumber);
         }
         return save;

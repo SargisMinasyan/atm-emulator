@@ -3,7 +3,6 @@ package com.egs.task.atmemulator.dto;
 import lombok.*;
 
 import javax.validation.constraints.Pattern;
-import java.security.Timestamp;
 import java.time.LocalDateTime;
 
 @Getter

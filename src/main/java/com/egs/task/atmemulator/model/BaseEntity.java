@@ -16,15 +16,12 @@ public abstract class BaseEntity implements Cloneable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
     private UUID uuid;
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
 
     public BaseEntity() {
         this.uuid = UUID.randomUUID();

@@ -10,7 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MessageDTO {
-
     private String messages;
     private String title;
 }

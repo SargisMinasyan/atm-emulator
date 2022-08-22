@@ -16,11 +16,9 @@ public class CommunicationNetwork extends BaseEntity {
     private String webSite;
     @Column(name = "email_address")
     private String emailAddress;
-
     public CommunicationNetwork() {
 
     }
-
     public CommunicationNetwork( String contactAsWithNumber, String webSite, String emailAddress) {
         this.contactAsWithNumber = contactAsWithNumber;
         this.webSite = webSite;

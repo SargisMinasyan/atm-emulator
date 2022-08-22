@@ -13,17 +13,18 @@ public class MessagesForATMUser extends BaseEntity {
 
     private String title;
     private String messages;
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id")
     private ATMUser user;
 
-    protected MessagesForATMUser(String messages,String title,ATMUser user) {
+    protected MessagesForATMUser(String messages, String title, ATMUser user) {
         this.user = user;
         this.title = title;
         this.messages = messages;
     }
-    public static MessagesForATMUser of(final String  messages,final String title,final ATMUser user) {
-        return new MessagesForATMUser(messages,title,user);
+
+    public static MessagesForATMUser of(final String messages, final String title, final ATMUser user) {
+        return new MessagesForATMUser(messages, title, user);
     }
 
     protected MessagesForATMUser() {

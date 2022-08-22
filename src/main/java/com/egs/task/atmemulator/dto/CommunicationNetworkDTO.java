@@ -1,6 +1,5 @@
 package com.egs.task.atmemulator.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 

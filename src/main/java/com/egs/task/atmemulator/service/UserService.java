@@ -12,15 +12,10 @@ import java.util.UUID;
 public interface UserService {
 
     Optional<ATMUser> findByEmail(String username);
-
     Optional<ATMUser> findByCardNumber(String cartNumber);
-
     String findBalanceByEmail(String username);
-
     ATMUser save(ATMUserSignUpDTO user);
-
     List<CommunicationNetwork> findCommunications();
-
     List<MessagesForATMUser> findAllUserMessages(UUID uuid);
     MessagesForATMUser addMessages(String cardNumber, String message,String title);
 }
