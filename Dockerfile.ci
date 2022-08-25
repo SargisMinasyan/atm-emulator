@@ -1,4 +1,4 @@
-FROM azul-17
+FROM openjdk:17
 EXPOSE 8080
 ADD target/atm-emulator-github-actions.jar atm-emulator-github-actions.jar
 ENTRYPOINT ["java", "-jar","atm-emulator-github-actions.jar"]
